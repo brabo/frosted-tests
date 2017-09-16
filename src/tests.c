@@ -29,9 +29,9 @@ int main(int argc, char *args[])
 	if (ret) {
 		printf("dirname tests failed!\n");
 		exit(ret);
-	else
+	} else {
 		printf("dirname tests succeeded!\n");
-
+	}
 
 	exit(0);
 }

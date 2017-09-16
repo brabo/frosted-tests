@@ -34,7 +34,7 @@ struct dirname_t tests[] = {{ "/dev/test", "/dev"},
 							{ "/sys/b", "/sys"},
 							{ "/sys//////blah", "/sys"},
 							{ "///////sys/blah", "///////sys"},
-							{ "/sys/b/lah", "/sys/b/"},
+							{ "/sys/b/lah", "/sys/b"},
 };
 
 int dirname_tests(void)
