@@ -22,7 +22,9 @@
 #include <stdlib.h>
 #include "test.h"
 #include "basename.h"
+#include "chdir.h"
 #include "dirname.h"
+#include "mem.h"
 #include "pthreads.h"
 
 int main(int argc, char *args[])
@@ -37,12 +39,29 @@ int main(int argc, char *args[])
 		printf("basename tests succeeded!\n");
 	}
 
+	ret = chdir_tests();
+	if (ret) {
+		printf("chdir tests failed!\n");
+		exit(ret);
+	} else {
+		printf("chdir tests succeeded!\n");
+	}
+
+
 	ret = dirname_tests();
 	if (ret) {
 		printf("dirname tests failed!\n");
 		exit(ret);
 	} else {
 		printf("dirname tests succeeded!\n");
+	}
+
+	ret = mem_tests();
+	if (ret) {
+		printf("memory tests failed!\n");
+		exit(ret);
+	} else {
+		printf("memory tests succeeded!\n");
 	}
 
 	//ret = pthreads_tests();
