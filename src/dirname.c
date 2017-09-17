@@ -35,6 +35,12 @@ static struct dirname_t tests[] = {{ "/dev/test", "/dev"},
 							{ "/sys//////blah", "/sys"},
 							{ "///////sys/blah", "///////sys"},
 							{ "/sys/b/lah", "/sys/b"},
+							{ "/usr/lib", "/usr"},
+							{ "/usr/", "/"},
+							{ "usr", "."},
+							{ ".", "."},
+							{ "..", "."},
+							{ "", "."},
 };
 
 int dirname_tests(void)
