@@ -1,8 +1,8 @@
 CC=gcc
 
-CFLAGS=-I. --std=gnu99 -I./include -fsanitize=address
+CFLAGS=-I. --std=gnu99 -I./include -fsanitize=address -lpthread
 
-TESTS_OBJ=src/tests.o src/dirname.o
+TESTS_OBJ=src/tests.o src/basename.o src/dirname.o src/pthreads.o
 
 LDFLAGS=
 LDLIBS=

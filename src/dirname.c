@@ -26,7 +26,7 @@ struct dirname_t {
 	char txt[64];
 };
 
-struct dirname_t tests[] = {{ "/dev/test", "/dev"},
+static struct dirname_t tests[] = {{ "/dev/test", "/dev"},
 							{ "/sys/blah", "/sys"},
 							{ "/", "/"},
 							{ "/sys", "/"},

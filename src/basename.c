@@ -18,40 +18,37 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <libgen.h>
 #include "test.h"
-#include "basename.h"
-#include "dirname.h"
-#include "pthreads.h"
 
-int main(int argc, char *args[])
+struct basename_t {
+	char path[64];
+	char txt[64];
+};
+
+static struct basename_t tests[] = {{ "/dev/test", "test"},
+							{ "/sys/blah", "blah"},
+							{ "/", "/"},
+							{ "////////", "/"},
+							{ "/sys", "sys"},
+							{ "/sys/", "sys"},
+							{ "/sys/b", "b"},
+							{ "/sys//////blah", "blah"},
+							{ "///////sys/blah", "blah"},
+							{ "/sys/b/lah", "lah"},
+							{ ".", "."},
+};
+
+int basename_tests(void)
 {
-	int ret;
+ 	char *path;
+ 	int i;
 
-	ret = basename_tests();
-	if (ret) {
-		printf("basename tests failed!\n");
-		exit(ret);
-	} else {
-		printf("basename tests succeeded!\n");
-	}
+ 	for (i = 0; i < 11; i++) {
+ 		path = basename(tests[i].path);
+ 		test_str(path, tests[i].txt);
+ 	}
 
-	ret = dirname_tests();
-	if (ret) {
-		printf("dirname tests failed!\n");
-		exit(ret);
-	} else {
-		printf("dirname tests succeeded!\n");
-	}
-
-	//ret = pthreads_tests();
-	//if (ret) {
-	//	printf("pthreads tests failed!\n");
-	//	exit(ret);
-	//} else {
-	//	printf("pthreads tests succeeded!\n");
-	//}
-
-	exit(0);
+	return 0;
 }
+
